@@ -1,6 +1,6 @@
 This entire repo was built by claude code.
 
-# Insta 360 Filesystem Create and Exif Timestamp Fix
+# Insta 360 Filesystem Create and Exif Timestamp Tools
 
 A collection of cross-platform scripts to parse timestamps from filenames of exported images and videos from Insta 360 Studio and apply them to file metadata and filesystem timestamps.
 
