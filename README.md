@@ -1,6 +1,8 @@
-# InstaExifData
+This entire repo was built by claude code.
 
-A collection of cross-platform scripts to parse timestamps from camera filenames and apply them to file metadata and filesystem timestamps.
+# Insta 360 Exif and Create Data
+
+A collection of cross-platform scripts to parse timestamps from filenames of exported images and videos from Insta 360 Studio and apply them to file metadata and filesystem timestamps.
 
 ## Overview
 
@@ -25,7 +27,32 @@ VID_20240815_143027_01_001.mp4  → August 15, 2024 at 2:30:27 PM
 
 ## Scripts
 
-### 1. Python Script (Full Featured) - `add_timestamp_exif.py`
+### 1. Bash Script (Lightweight) - `update_timestamps.sh`
+
+**Features:**
+- ✅ Updates filesystem timestamps only
+- ✅ No external dependencies
+- ✅ Works on Linux, macOS, and WSL
+
+**Usage:**
+```bash
+chmod +x update_timestamps.sh
+./update_timestamps.sh
+```
+
+### 2. PowerShell Script (Windows) - `Update-Timestamps.ps1`
+
+**Features:**
+- ✅ Updates filesystem timestamps only
+- ✅ No external dependencies
+- ✅ Works on Windows PowerShell and PowerShell Core
+
+**Usage:**
+```powershell
+.\Update-Timestamps.ps1
+```
+
+### 3. Python Script (Advanced Users) - `add_timestamp_exif.py`
 
 **Features:**
 - ✅ Updates EXIF data in JPEG images
@@ -46,39 +73,15 @@ pip install Pillow piexif
 python add_timestamp_exif.py
 ```
 
-### 2. Bash Script (Lightweight) - `update_timestamps.sh`
-
-**Features:**
-- ✅ Updates filesystem timestamps only
-- ✅ No external dependencies
-- ✅ Works on Linux, macOS, and WSL
-
-**Usage:**
-```bash
-chmod +x update_timestamps.sh
-./update_timestamps.sh
-```
-
-### 3. PowerShell Script (Windows) - `Update-Timestamps.ps1`
-
-**Features:**
-- ✅ Updates filesystem timestamps only
-- ✅ No external dependencies
-- ✅ Works on Windows PowerShell and PowerShell Core
-
-**Usage:**
-```powershell
-.\Update-Timestamps.ps1
-```
-
 ## Installation
 
 1. **Clone or download** the scripts to your target directory
-2. **Install dependencies** (Python script only):
+2. **For most users:** No additional setup required - use the bash or PowerShell scripts 
+3. **For advanced users (Python script only):**
    ```bash
    pip install Pillow piexif
    ```
-3. **Install ffmpeg** (optional, for video metadata):
+4. **Install ffmpeg** (optional, for Python video metadata):
    - Windows: Download from [ffmpeg.org](https://ffmpeg.org/download.html)
    - macOS: `brew install ffmpeg`
    - Linux: `sudo apt install ffmpeg` (Ubuntu/Debian) or equivalent
@@ -87,14 +90,14 @@ chmod +x update_timestamps.sh
 
 ### Process files in current directory:
 ```bash
-# Python (full features)
-python add_timestamp_exif.py
-
-# Bash (filesystem only)
+# Bash (filesystem timestamps - recommended for Linux/macOS/WSL)
 ./update_timestamps.sh
 
-# PowerShell (filesystem only)
+# PowerShell (filesystem timestamps - recommended for Windows)
 .\Update-Timestamps.ps1
+
+# Python (advanced users - full EXIF/metadata features)
+python add_timestamp_exif.py
 ```
 
 ### Example output:
@@ -116,9 +119,9 @@ Processing complete: 6 files updated, 1 files skipped.
 
 | Script | EXIF Data | Video Metadata | Filesystem Timestamps |
 |--------|-----------|----------------|----------------------|
-| Python | ✅ Yes | ✅ Yes (with ffmpeg) | ✅ Yes |
 | Bash | ❌ No | ❌ No | ✅ Yes |
 | PowerShell | ❌ No | ❌ No | ✅ Yes |
+| Python | ✅ Yes | ✅ Yes (with ffmpeg) | ✅ Yes |
 
 ### EXIF Data Fields Updated (Python script):
 - `DateTimeOriginal` - When the photo was taken
