@@ -25,9 +25,9 @@ parse_timestamp() {
         local second="${time_str:4:2}"
         
         # Validate date components
-        if [[ $month -ge 1 && $month -le 12 && $day -ge 1 && $day -le 31 && 
-              $hour -ge 0 && $hour -le 23 && $minute -ge 0 && $minute -le 59 && 
-              $second -ge 0 && $second -le 59 ]]; then
+        if ((10#$month >= 1 && 10#$month <= 12 && 10#$day >= 1 && 10#$day <= 31 &&
+              10#$hour >= 0 && 10#$hour <= 23 && 10#$minute >= 0 && 10#$minute <= 59 &&
+              10#$second >= 0 && 10#$second <= 59)); then
             # Format for touch command: [[CC]YY]MMDDhhmm[.ss]
             local touch_format="${year}${month}${day}${hour}${minute}.${second}"
             echo "$touch_format"
